@@ -1,0 +1,21 @@
+.controls_wrapper {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.cell:hover {
+    cursor: pointer;
+}
