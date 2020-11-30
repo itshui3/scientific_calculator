@@ -2,7 +2,7 @@ import React from 'react'
 // compos
 import Cell from './Cell/Cell'
 
-function Row({rowConstruct, writeChara, negate}) {
+function Row({rowConstruct, variableManipulation}) {
     return (
         <div className='row'>
         {
@@ -13,8 +13,7 @@ function Row({rowConstruct, writeChara, negate}) {
                     <Cell 
                     key={cellID}
                     symbol={sym} 
-                    writeChara={writeChara}
-                    negate={negate}
+                    variableManipulation={variableManipulation}
                     />
                 )
             })

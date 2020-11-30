@@ -6,30 +6,26 @@ import Row from './Row/Row'
 //assets
 import { buttonsConstruct } from './assets/buttonsConstruct'
 
+//hooks
+import { WriteCache } from './hooks/WriteCache'
+
 //styles
 import './alignButtons.css'
 
 function Controls(props) {
-    let [writeCache, setWriteCache] = useState('')
+
+    const [writeCache, writeChara, negate, backspace, reset] = WriteCache('')
 
     useEffect(() => {
-        if (writeCache.length) {
-            console.log('writeCache', writeCache)
-        }
+
+        console.log('writeCache', writeCache)
+
     }, [writeCache])
 
-    const writeChara = (chara) => {
-        if (!writeCache.length) {
-            setWriteCache(chara)
-        } else {
-            setWriteCache(writeCache + chara)
-        }
-    }
-
-    const negate = () => {
-        if (writeCache.length) {
-            setWriteCache( (parseFloat(writeCache) * -1).toString() )
-        }
+    const variableManipulation = {
+        writeChara,
+        negate,
+        backspace
     }
 
     return (
@@ -40,8 +36,7 @@ function Controls(props) {
                         <Row 
                         key={rowID}
                         rowConstruct={rowConstruct} 
-                        writeChara={writeChara}
-                        negate={negate}
+                        variableManipulation={variableManipulation}
                         />
                         )
                 })
