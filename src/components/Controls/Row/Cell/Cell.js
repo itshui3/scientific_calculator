@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { returnFunction } from './assets/returnFunction'
-
 function Cell({
     symbol, 
     writeChara,
@@ -22,7 +20,7 @@ function Cell({
             :
             symbol in neg
             ?
-            () => negate()
+            negate
             :
             null
         }
