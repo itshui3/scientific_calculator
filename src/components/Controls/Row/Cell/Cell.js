@@ -2,23 +2,32 @@ import React from 'react'
 
 function Cell({
     symbol, 
-    writeChara,
-    negate
-
+    variableManipulation
 }) {
 
-    let nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    let neg = ['+/-']
+    const {
+        writeChara,
+        negate,
+        backspace
+    } = variableManipulation
+
+    let numVals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    let negVals = ['+/-']
+    let backspaceVals = ['Backspace']
 
     return (
         <div 
         className='cell'
         onClick={
-            neg.indexOf(symbol) > -1
+            backspaceVals.indexOf(symbol) > -1
+            ?
+            backspace
+            :
+            negVals.indexOf(symbol) > -1
             ?
             negate
             :
-            nums.indexOf(symbol) > -1
+            numVals.indexOf(symbol) > -1
             ?
             () => writeChara(symbol)
             :
