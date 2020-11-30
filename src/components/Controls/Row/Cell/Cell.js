@@ -14,13 +14,13 @@ function Cell({
         <div 
         className='cell'
         onClick={
-            symbol in nums
-            ?
-            () => writeChara(symbol)
-            :
-            symbol in neg
+            neg.indexOf(symbol) > -1
             ?
             negate
+            :
+            nums.indexOf(symbol) > -1
+            ?
+            () => writeChara(symbol)
             :
             null
         }

@@ -27,7 +27,6 @@ function Controls(props) {
     }
 
     const negate = () => {
-        console.log('in negate')
         if (writeCache.length) {
             setWriteCache( (parseFloat(writeCache) * -1).toString() )
         }
