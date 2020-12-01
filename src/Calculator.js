@@ -15,30 +15,48 @@ function Calculator(props) {
     const [input, writeChara, negate, backspace, resetCache] = WriteCache('')
     const [sequence, setSequence] = useState('')
     const [runningProd, setRunningProd] = useState(0)
+    const [operator, setOperator] = useState('')
 
     const addToSequence = (fn) => {
 
-        if (!sequence.length) {
-
-            if (input.length) {
-                setSequence(input + ' ' + fn)
-                setRunningProd(parseFloat(input))
-                resetCache()
-                return
-            } else {
-                setSequence('0' + ' ' + fn)
-                setRunningProd(0)
-                resetCache()
-                return
-            }
-
+        if (!input.length && !sequence.length) {
+            setSequence(0 + ' ' + fn)
+            setOperator(fn)
+            setRunningProd(0)
+            resetCache()
+            return
         }
 
-        setSequence(sequence + ' ' + input + ' ' + fn)
-        setRunningProd( performMathmatics(runningProd, input, fn) )
-        resetCache()
+        if (input.length && !sequence.length) {
+            setSequence(input + ' ' + fn)
+            setOperator(fn)
+            setRunningProd(input)
+            resetCache()
+            return
+        }
+
+        if (!input.length && sequence.length) {
+            setSequence((seq) => {
+                return seq.slice(0, seq.length-1) + fn
+            })
+            setOperator(fn)
+            return
+        }
+
+        if (input.length && sequence.length) {
+            let nextProd = performMathmatics(runningProd, input, operator)
+            setSequence(sequence + ' ' + input + ' ' + fn)
+            setOperator(fn)
+            setRunningProd(nextProd)
+            resetCache()
+            return
+        }
 
     }
+
+    useEffect(() => {
+        console.log('input')
+    }, [input])
 
     const cellMethods = {
         writeChara,
@@ -53,7 +71,7 @@ function Calculator(props) {
                 <Dashboard 
                 input={input}
                 sequence={sequence}
-                runningProd={runningProd}
+                runningProd={runningProd.toString()}
                 />
                 <Controls 
                 cellMethods={cellMethods}

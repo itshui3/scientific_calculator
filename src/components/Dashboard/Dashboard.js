@@ -14,15 +14,23 @@ function Dashboard({input, sequence, runningProd}) {
 
             <h2 className='dashboard_input'>
             {
-            input.length 
+            input.length && runningProd.length 
             ? 
-            input 
+            input
             : 
-            runningProd.length 
+            !input.length && runningProd.length
             ? 
             runningProd 
             : 
+            input.length && !runningProd.length
+            ?
+            input
+            :
+            !input.length && !runningProd.length
+            ?
             '0'
+            :
+            null
             }
             </h2>
 
