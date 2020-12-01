@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+// compos
 import { Controls, Interface } from './components'
-
+//hooks
+import { WriteCache } from '../../hooks/WriteCache'
+// css
 import './centerCalc.css'
 
 function Calculator(props) {
 
-    const [input, setInput] = useState('')
+    const [input, writeChara, negate, backspace, reset] = WriteCache('')
+
+    const variableManipulation = {
+        writeChara,
+        negate,
+        backspace
+    }
+
+    useEffect(() => {
+
+        console.log('input', input)
+
+    }, [input])
 
     return (
         <div className='app_wrapper'>
@@ -15,6 +29,7 @@ function Calculator(props) {
                 input={input}
                 />
                 <Controls 
+                variableManipulation={variableManipulation}
                 input={input}
                 />
             </div>

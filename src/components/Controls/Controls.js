@@ -1,36 +1,15 @@
 import React, {useState, useEffect} from 'react';
 
-//comps
-import Row from './Row/Row'
-import Cell from './Cell/Cell'
-
 //assets
 import { buttonsConstruct } from './assets/buttonsConstruct'
 
 //helpers
 import { renderCells } from './helpers/renderCells'
 
-//hooks
-import { WriteCache } from './hooks/WriteCache'
-
 //styles
 import './alignButtons.css'
 
-function Controls({input}) {
-
-    const [writeCache, writeChara, negate, backspace, reset] = WriteCache('')
-
-    useEffect(() => {
-
-        console.log('writeCache', writeCache)
-
-    }, [writeCache])
-
-    const variableManipulation = {
-        writeChara,
-        negate,
-        backspace
-    }
+function Controls({variableManipulation}) {
 
     return (
         <div className='controls_wrapper'>
@@ -42,9 +21,9 @@ function Controls({input}) {
                         key={rowID}
                         >
                         {
-                            rowConstruct
+                            rowConstruct.length
                             ?
-                            renderCells(rowConstruct, variableManipulation, Cell)
+                            renderCells(rowConstruct, variableManipulation)
                             :
                             null
                         }
