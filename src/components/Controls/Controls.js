@@ -2,9 +2,13 @@ import React, {useState, useEffect} from 'react';
 
 //comps
 import Row from './Row/Row'
+import Cell from './Cell/Cell'
 
 //assets
 import { buttonsConstruct } from './assets/buttonsConstruct'
+
+//helpers
+import { renderCells } from './helpers/renderCells'
 
 //hooks
 import { WriteCache } from './hooks/WriteCache'
@@ -12,7 +16,7 @@ import { WriteCache } from './hooks/WriteCache'
 //styles
 import './alignButtons.css'
 
-function Controls(props) {
+function Controls({input}) {
 
     const [writeCache, writeChara, negate, backspace, reset] = WriteCache('')
 
@@ -33,12 +37,20 @@ function Controls(props) {
             {
                 buttonsConstruct.map((rowConstruct, rowID) => {
                     return (
-                        <Row 
+                        <div 
+                        className='row'
                         key={rowID}
-                        rowConstruct={rowConstruct} 
-                        variableManipulation={variableManipulation}
-                        />
+                        >
+                        {
+                            rowConstruct
+                            ?
+                            renderCells(rowConstruct, variableManipulation, Cell)
+                            :
+                            null
+                        }
+                        </div>
                         )
+
                 })
             }
         </div>

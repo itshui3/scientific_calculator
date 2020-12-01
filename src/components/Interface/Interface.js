@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Interface({output}) {
+function Interface({input}) {
     return (
         <div className='interface_wrapper'>
-            {output}
+            {input}
         </div>
     )
 }
