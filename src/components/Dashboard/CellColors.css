@@ -1,0 +1,26 @@
+
+
+.cell:hover {
+    background-color: #FAF0E6;
+    border: 1px solid #FAF0E6;
+}
+
+.cell:active {
+    background-color: #FDF5E6;
+    border: 1px solid #FDF5E6;
+}
+
+.cellBG_lightGrey {
+    background-color: #FFFAFA;
+    border: 1px solid #FFFAFA;
+}
+
+.cellBG_white {
+    background-color: #FFFFFF;
+    border: 1px solid  #FFFFFF;
+}
+
+.cellBG_blue {
+    background-color: #00CED1;
+    border: 1px solid #00CED1;
+}

@@ -1,5 +1,5 @@
 
 import Controls from './Controls/Controls.js'
-import Interface from './Interface/Interface'
+import Dashboard from './Dashboard/Dashboard'
 
-export { Controls, Interface }
+export { Controls, Dashboard }
