@@ -1,44 +1,35 @@
 import React, {useState, useEffect} from 'react';
 
-//comps
-import Row from './Row/Row'
-
 //assets
 import { buttonsConstruct } from './assets/buttonsConstruct'
 
-//hooks
-import { WriteCache } from './hooks/WriteCache'
+//helpers
+import { renderCells } from './helpers/renderCells'
 
 //styles
 import './alignButtons.css'
 
-function Controls(props) {
-
-    const [writeCache, writeChara, negate, backspace, reset] = WriteCache('')
-
-    useEffect(() => {
-
-        console.log('writeCache', writeCache)
-
-    }, [writeCache])
-
-    const variableManipulation = {
-        writeChara,
-        negate,
-        backspace
-    }
+function Controls({variableManipulation}) {
 
     return (
         <div className='controls_wrapper'>
             {
                 buttonsConstruct.map((rowConstruct, rowID) => {
                     return (
-                        <Row 
+                        <div 
+                        className='row'
                         key={rowID}
-                        rowConstruct={rowConstruct} 
-                        variableManipulation={variableManipulation}
-                        />
+                        >
+                        {
+                            rowConstruct.length
+                            ?
+                            renderCells(rowConstruct, variableManipulation)
+                            :
+                            null
+                        }
+                        </div>
                         )
+
                 })
             }
         </div>
