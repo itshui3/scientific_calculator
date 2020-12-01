@@ -1,23 +1,4 @@
-.dashboard_wrapper {
-    width: 328px;
-    height: 100px;
 
-    /* background-color: #808080; */
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.dashboard_sequence {
-    height: 35px;
-
-}
-
-.dashboard_input {
-    font-size: 1.5rem;
-
-}
 
 .cell:hover {
     background-color: #FAF0E6;

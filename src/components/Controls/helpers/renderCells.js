@@ -1,13 +1,13 @@
 import Cell from '../Cell/Cell'
 
-const renderCells = (row, varMethods) => {
+const renderCells = (row, cellMethods) => {
 
     return row.map((sym, cellID) => {
         return <Cell 
         id={cellID}
         key={cellID}
         symbol={sym} 
-        variableManipulation={varMethods} 
+        cellMethods={cellMethods} 
         />
     })
 }
