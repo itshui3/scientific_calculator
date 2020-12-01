@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react'
 
 //assets
 import { buttonsConstruct } from './assets/buttonsConstruct'
@@ -16,7 +16,7 @@ function Controls({variableManipulation}) {
             {
                 buttonsConstruct.map((rowConstruct, rowID) => {
                     return (
-                        <div 
+                        <div
                         className='row'
                         key={rowID}
                         >
