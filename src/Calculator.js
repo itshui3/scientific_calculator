@@ -19,6 +19,10 @@ function Calculator(props) {
 
     const addToSequence = (fn) => {
 
+        if (fn === 'x') {
+            console.log('in addToSeq, printing called op', fn)
+        }
+
         if (!input.length && !sequence.length) {
             setSequence(0 + ' ' + fn)
             setOperator(fn)

@@ -3,7 +3,7 @@ let negVals = ['+/-']
 let backspaceVals = ['Backspace']
 
 // operations
-let operations = ['+', '-', '*', '/']
+let operations = ['+', '-', 'x', '/']
 
 const evaluateSymbol = (sym, methods) => {
 
