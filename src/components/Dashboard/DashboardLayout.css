@@ -15,10 +15,12 @@
     line-height: 25px;
     font-size: .65rem;
     color: #696969;
+    cursor: default;
 }
 
 .dashboard_input {
     height: 50px;
     line-height: 50px;
     font-size: 1.5rem;
+    cursor: default;
 }

@@ -4,14 +4,15 @@ import { evaluateSymbol } from './helpers/evaluateSymbol'
 import { evaluateColor } from './helpers/evaluateColor'
 
 function Cell({
-    symbol, 
-    cellMethods
+    symbol,
+    cellMethods,
+    cellAssets
 }) {
 
     return (
         <div 
         className={`cell ${evaluateColor(symbol)}`}
-        onClick={() => evaluateSymbol(symbol, cellMethods)}
+        onClick={() => evaluateSymbol(symbol, cellMethods, cellAssets)}
         >
         {symbol}
         </div>
