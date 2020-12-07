@@ -6,6 +6,10 @@ let backspaceVals = ['Backspace']
 let operations = ['+', '-', 'x', '/']
 let evaluate = ['=']
 
+// functions
+let clearInput = ['CE']
+let clear = ['C']
+
 const evaluateSymbol = (sym, methods, assets) => {
 
     const {
@@ -16,7 +20,8 @@ const evaluateSymbol = (sym, methods, assets) => {
         endSequence,
         resetSeq,
         resetOp,
-        resetCalc
+        resetCalc,
+        zeroInput
     } = methods
 
     const {
@@ -27,6 +32,14 @@ const evaluateSymbol = (sym, methods, assets) => {
     if (endCalc) {
         resetCalc()
         return
+    }
+
+    if (clearInput.indexOf(sym) > -1) {
+        zeroInput()
+    }
+
+    if (clear.indexOf(sym) > -1) {
+
     }
 
     if (operations.indexOf(sym) > -1) {

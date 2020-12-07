@@ -21,11 +21,6 @@ function Calculator(props) {
 
     const addToSequence = (fn) => {
 
-        // if (endCalc) {
-        //     resetCalc()
-        //     return
-        // }
-
         if (fn === '=') {
             endSequence()
             return
@@ -67,6 +62,7 @@ function Calculator(props) {
     }
 
     const endSequence = () => {
+        console.log('seq at beginning of end Seq', sequence)
         if (!operator) {
             return
         } else {
@@ -77,65 +73,21 @@ function Calculator(props) {
             )
 
             setRunningProd(finalProd)
-            setSequence(sequence + ' ' + operator + ' ' + input? input : runningProd + ' ' + '=')
-            console.log('init case seq', sequence)
-            console.log('init case op', operator)
+
+            if (input) {
+                setSequence((seq) => {
+                    return seq + ' ' + input + ' ' + '='
+                })
+            } else {
+                setSequence((seq) => {
+                    return seq + ' ' + runningProd + ' ' + '='
+                })
+            }
+
             resetInput()
             setEndCalc(true)
         }
     }
-
-    // const endSequence = () => {
-    //     // dependencies: 
-    //     // input
-    //     // sequence
-    //     // operator(this would be the prev one)
-    //     // runningProd
-
-    //     // case: there's an input but no pre-existing calcs
-    //     // it should show '=' in sequence, but be replaceable with other ops
-    //     // and not calculate anything, since without a prev op we can't automate 
-    //     // assignment operator
-    //     if (!operator) {
-    //         console.log('in endSequence')
-    //         console.log('triggered by: input | !operator')
-    //         setOperator('=')
-
-    //         setSequence(sequence.length? sequence: input + ' ' + '=')
-    //         if (input) {
-    //             setRunningProd(input)
-    //         }
-    //         resetInput()
-    //     } else {
-    //         // check for pre-existing equality calcs
-    //         if (operator.length > 1) {
-    //             let cachedInput = operator[2];
-    //             let cachedOp = operator[0];
-
-    //             // perform the calculations
-    //             let nextProd = performMathmatics(input? input: runningProd, cachedInput, cachedOp)
-
-    //             // state setters
-    //             setRunningProd(nextProd)
-    //             setOperator(cachedOp + '=' + cachedInput)
-    //             setSequence(runningProd + ' ' + cachedOp + ' ' + cachedInput + ' ' + '=')
-    //             resetInput()
-    //         } else {
-    //             let nextProd = performMathmatics(runningProd, input? input: runningProd, operator)
-
-    //             setRunningProd(nextProd)
-    //             setOperator(operator + '=' + input? input: runningProd)
-    //             setSequence(sequence + ' ' + input? input: runningProd + ' ' + '=')
-    //             resetInput()
-    //         }
-
-    //         // if input, operate prevProd against input
-    //     }
-    //     // calculate prev op against input
-    //     // let nextProd = performMathmatics(runningProd, input, operator)
-
-
-    // }
 
     const resetSeq = () => {
         setSequence('')
@@ -154,6 +106,21 @@ function Calculator(props) {
         setEndCalc(false)
     }
 
+    // const zeroInput = async () => {
+    // // my theory was that if I do await, it will  create a delaying effect on the logic to run
+    // // this is because it turns it async. By making it async, it doesn't have to finish
+    // // since it doesn't have to finish it gets pushed behind and will be performed afterwards
+    // // theoretically, then. This should also be possible with setTimeout
+    //     resetInput()
+    //     // because writeChara relies on an input that can't be updated until writeChara is fully called, it is writing over resetInput
+    //     await writeChara('0')
+    // }
+
+    const zeroInput = async () => {
+            resetInput()
+            await writeChara('0')
+        }
+
     useEffect(() => {
         console.log('input')
     }, [input])
@@ -166,7 +133,8 @@ function Calculator(props) {
         endSequence,
         resetSeq,
         resetOp,
-        resetCalc
+        resetCalc,
+        zeroInput
     }
 
     const cellAssets = {
