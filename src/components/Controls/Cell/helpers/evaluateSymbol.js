@@ -4,19 +4,38 @@ let backspaceVals = ['Backspace']
 
 // operations
 let operations = ['+', '-', 'x', '/']
+let evaluate = ['=']
 
-const evaluateSymbol = (sym, methods) => {
+const evaluateSymbol = (sym, methods, assets) => {
 
     const {
         writeChara,
         negate,
         backspace,
-        addToSequence
+        addToSequence,
+        endSequence,
+        resetSeq,
+        resetOp,
+        resetCalc
     } = methods
+
+    const {
+        operator,
+        endCalc
+    } = assets
+
+    if (endCalc) {
+        resetCalc()
+        return
+    }
 
     if (operations.indexOf(sym) > -1) {
         addToSequence(sym)
         return
+    }
+
+    if (evaluate.indexOf(sym) > -1) {
+        endSequence()
     }
 
     if (backspaceVals.indexOf(sym) > -1) {
@@ -30,6 +49,14 @@ const evaluateSymbol = (sym, methods) => {
     }
 
     if (numVals.indexOf(sym) > -1) {
+
+        if (operator.length > 1) {
+            // ie. if equality op and user inputs a num
+            // the sequence and Op must both reset
+            resetOp()
+            resetSeq()
+        }
+
         writeChara(sym)
         return
     }

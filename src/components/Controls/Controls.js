@@ -9,7 +9,7 @@ import { renderCells } from './helpers/renderCells'
 //styles
 import './alignButtons.css'
 
-function Controls({cellMethods, addToSequence}) {
+function Controls({cellMethods, cellAssets}) {
 
     return (
         <div className='controls_wrapper'>
@@ -23,7 +23,7 @@ function Controls({cellMethods, addToSequence}) {
                         {
                             rowConstruct.length
                             ?
-                            renderCells(rowConstruct, cellMethods)
+                            renderCells(rowConstruct, cellMethods, cellAssets)
                             :
                             null
                         }
