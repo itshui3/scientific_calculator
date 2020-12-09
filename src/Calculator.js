@@ -99,7 +99,6 @@ function Calculator(props) {
     }
 
     const resetCalc = () => {
-        console.log('reset Calc')
         resetSeq()
         resetOp()
         resetInput()
@@ -107,9 +106,8 @@ function Calculator(props) {
         setEndCalc(false)
     }
 
-    const zeroInput = async () => {
+    const zeroInput = () => {
             resetInput()
-            await writeChara('0')
     }
 
     const divideX = () => {
@@ -132,7 +130,7 @@ function Calculator(props) {
         if (!input) {return}
 
         setWriteCache((written) => {
-            return performSqrt(written)
+            return performSqrt(written, 4).toString()
         })
     }
 

@@ -11,6 +11,7 @@ let clearInput = ['CE']
 let clear = ['C']
 let divideByX = ['1/x']
 let squareXby2 = ['x^2']
+let sqrtX = ['sqrt(x)']
 
 const evaluateSymbol = (sym, methods, assets) => {
 
@@ -25,7 +26,8 @@ const evaluateSymbol = (sym, methods, assets) => {
         resetCalc,
         zeroInput,
         divideX,
-        squareX
+        squareX,
+        sqrt
     } = methods
 
     const {
@@ -35,6 +37,11 @@ const evaluateSymbol = (sym, methods, assets) => {
 
     if (endCalc) {
         resetCalc()
+        return
+    }
+
+    if (sqrtX.indexOf(sym) > -1) {
+        sqrt()
         return
     }
 
