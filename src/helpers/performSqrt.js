@@ -1,6 +1,14 @@
 const performSqrt = (input, precision) => {
+    // input types: 
+    // '1'
+    // '1.'
+    // '1.0'
+    // '1.00' - extra trailing 0's
+    // '1.1'
+
     let inputFloat = parseFloat(input)
-    if (inputFloat == 1) { return 1 }
+
+    if (inputFloat === 1) { return 1 }
     
     let valBuilder = '';
 
@@ -11,7 +19,7 @@ const performSqrt = (input, precision) => {
         }
     }
 
-    let wholeInt = parseInt(valBuilder)
+    let wholeInt = parseFloat(valBuilder)
 
     if (wholeInt*wholeInt === inputFloat) {
         return wholeInt
