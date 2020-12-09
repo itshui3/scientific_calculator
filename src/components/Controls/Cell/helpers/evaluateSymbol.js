@@ -9,6 +9,7 @@ let evaluate = ['=']
 // functions
 let clearInput = ['CE']
 let clear = ['C']
+let divideByX = ['1/x']
 
 const evaluateSymbol = (sym, methods, assets) => {
 
@@ -21,7 +22,8 @@ const evaluateSymbol = (sym, methods, assets) => {
         resetSeq,
         resetOp,
         resetCalc,
-        zeroInput
+        zeroInput,
+        divideX
     } = methods
 
     const {
@@ -34,12 +36,19 @@ const evaluateSymbol = (sym, methods, assets) => {
         return
     }
 
+    if (divideByX.indexOf(sym) > -1) {
+        divideX()
+        return
+    }
+
     if (clearInput.indexOf(sym) > -1) {
         zeroInput()
+        return
     }
 
     if (clear.indexOf(sym) > -1) {
-
+        resetCalc()
+        return
     }
 
     if (operations.indexOf(sym) > -1) {

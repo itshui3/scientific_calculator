@@ -48,7 +48,7 @@ const WriteCache = (initState) => {
         setWriteCache('')
     }
 
-    return [writeCache, writeChara, negate, backspace, reset]
+    return [writeCache, writeChara, setWriteCache, negate, backspace, reset]
 }
 
 export { WriteCache }

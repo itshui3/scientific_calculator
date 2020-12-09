@@ -12,7 +12,7 @@ import './colorBG.css'
 
 function Calculator(props) {
 
-    const [input, writeChara, negate, backspace, resetInput] = WriteCache('')
+    const [input, writeChara, setWriteCache, negate, backspace, resetInput] = WriteCache('')
     const [sequence, setSequence] = useState('')
     const [runningProd, setRunningProd] = useState(0)
     const [operator, setOperator] = useState('')
@@ -106,24 +106,18 @@ function Calculator(props) {
         setEndCalc(false)
     }
 
-    // const zeroInput = async () => {
-    // // my theory was that if I do await, it will  create a delaying effect on the logic to run
-    // // this is because it turns it async. By making it async, it doesn't have to finish
-    // // since it doesn't have to finish it gets pushed behind and will be performed afterwards
-    // // theoretically, then. This should also be possible with setTimeout
-    //     resetInput()
-    //     // because writeChara relies on an input that can't be updated until writeChara is fully called, it is writing over resetInput
-    //     await writeChara('0')
-    // }
-
     const zeroInput = async () => {
             resetInput()
             await writeChara('0')
-        }
+    }
 
-    useEffect(() => {
-        console.log('input')
-    }, [input])
+    const divideX = () => {
+        if (!input) {return}
+
+        setWriteCache((written) => {
+            return (1/input).toString()
+        })
+    }
 
     const cellMethods = {
         writeChara,
@@ -134,7 +128,8 @@ function Calculator(props) {
         resetSeq,
         resetOp,
         resetCalc,
-        zeroInput
+        zeroInput,
+        divideX
     }
 
     const cellAssets = {
