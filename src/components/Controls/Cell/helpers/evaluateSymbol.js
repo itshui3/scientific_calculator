@@ -10,6 +10,7 @@ let evaluate = ['=']
 let clearInput = ['CE']
 let clear = ['C']
 let divideByX = ['1/x']
+let squareXby2 = ['x^2']
 
 const evaluateSymbol = (sym, methods, assets) => {
 
@@ -23,7 +24,8 @@ const evaluateSymbol = (sym, methods, assets) => {
         resetOp,
         resetCalc,
         zeroInput,
-        divideX
+        divideX,
+        squareX
     } = methods
 
     const {
@@ -33,6 +35,11 @@ const evaluateSymbol = (sym, methods, assets) => {
 
     if (endCalc) {
         resetCalc()
+        return
+    }
+
+    if (squareXby2.indexOf(sym) > -1) {
+        squareX()
         return
     }
 

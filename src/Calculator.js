@@ -5,6 +5,7 @@ import { Controls, Dashboard } from './components'
 import { WriteCache } from './hooks/WriteCache'
 // helpers
 import { performMathmatics } from './helpers/performMathmatics'
+import { performSqrt } from './helpers/performSqrt'
 // css
 import './centerCalc.css'
 import './shadowCalc.css'
@@ -119,6 +120,22 @@ function Calculator(props) {
         })
     }
 
+    const squareX = () => {
+        if (!input) {return}
+
+        setWriteCache((written) => {
+            return (input*input).toString()
+        })
+    }
+
+    const sqrt = () => {
+        if (!input) {return}
+
+        setWriteCache((written) => {
+            return performSqrt(written)
+        })
+    }
+
     const cellMethods = {
         writeChara,
         negate,
@@ -129,7 +146,9 @@ function Calculator(props) {
         resetOp,
         resetCalc,
         zeroInput,
-        divideX
+        divideX,
+        squareX,
+        sqrt
     }
 
     const cellAssets = {
