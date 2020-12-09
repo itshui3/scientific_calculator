@@ -134,6 +134,15 @@ function Calculator(props) {
         })
     }
 
+    const addDec = () => {
+        if (!input) {return}
+
+        setWriteCache((written) => {
+
+            return written += '.'
+        })
+    }
+
     const cellMethods = {
         writeChara,
         negate,
@@ -146,7 +155,8 @@ function Calculator(props) {
         zeroInput,
         divideX,
         squareX,
-        sqrt
+        sqrt,
+        addDec
     }
 
     const cellAssets = {

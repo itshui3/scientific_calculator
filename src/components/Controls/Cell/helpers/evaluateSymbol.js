@@ -1,6 +1,7 @@
 let numVals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 let negVals = ['+/-']
 let backspaceVals = ['Backspace']
+let decimalVal = ['.']
 
 // operations
 let operations = ['+', '-', 'x', '/']
@@ -27,7 +28,8 @@ const evaluateSymbol = (sym, methods, assets) => {
         zeroInput,
         divideX,
         squareX,
-        sqrt
+        sqrt,
+        addDec
     } = methods
 
     const {
@@ -84,6 +86,11 @@ const evaluateSymbol = (sym, methods, assets) => {
         return
     }
 
+    if (decimalVal.indexOf(sym) > -1) {
+        addDec()
+        return
+    }
+
     if (numVals.indexOf(sym) > -1) {
 
         if (operator.length > 1) {
@@ -92,7 +99,7 @@ const evaluateSymbol = (sym, methods, assets) => {
             resetOp()
             resetSeq()
         }
-
+// why does chara not write after reset? 
         writeChara(sym)
         return
     }

@@ -34,6 +34,3 @@ const performSqrt = (input, precision) => {
 }
 
 export { performSqrt }
-
-// quantity of study gives you tools that you can pick up and use
-// but quality of study changes the way that you think
