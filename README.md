@@ -1,39 +1,29 @@
-# Scientific Calc
+<h2>Scientific Calculator</h2>
+<ins>Client Deploy:</ins> <b>https://scientific-calculator-three.vercel.app/</b>
 In addition to basic arithmetic, the scientific calculator can evaluate scientific notation. The main difference seems to be that a scientific calc has functional & memory support, allowing it to perform more complex calculations. Whereas, a regular calculator can only perform direct low-level calculations. ie. 1+1, 2*5, but it can't do 2^5, because that would require holding values in memory. 
 
-# CRA info below vvv
-## Available Scripts
+<h2>What I learned</h2>
 
-In the project directory, you can run:
+Building this project was surprisingly tough when handling input cases depending on the state of a current calculation. It required a lot of playing around with my native windows calculator to see what expected behavior actually looked like and then inventorying all the cases to make sure behavior is expected. 
 
-### `yarn start`
+For example: 
+if I input: [8, x, 9, =]
+I get 72 and this also ends the calculation
+however if I input:  [8, x, 9, /]
+I get 72 as well, but the substring will log a proceeding operator. Then further inputs of other operators will manipulate the string as well as swap out operators until either '=' or a number gets entered. 
+then if I input: [8, x, 9, x, =]
+It assumes I want to take the previous product multiplied by the most recent input '9' to generate 5184
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Handling all these different cases was a real exercise in determination and patience since they would build off each other and create mind-boggling state-sequences. I just kept inventorying my cases and simplifying it while taking deep breaths and eventually the logic cleaned up and I programmed a calculator. I'm glad I didn't just simplify the problem to where it would just perform calculations but didn't 'behave' like a scientific calc normally does. That would have been way easier, and less rewarding.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<h2>Technologies Used</h2>
+<ins>Client:</ins> <br/>
+"react": "^17.0.1"<br />
 
-### `yarn build`
+<h2>Docs</h2>
+Local Boot-Up
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+git clone [use github's clone link]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+yarn install<br/>
+yarn start
