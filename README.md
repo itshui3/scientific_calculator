@@ -1,6 +1,6 @@
 <h2>Scientific Calculator</h2>
 <ins>Client Deploy:</ins> <b>https://scientific-calculator-three.vercel.app/</b>
-In addition to basic arithmetic, the scientific calculator can evaluate scientific notation. The main difference seems to be that a scientific calc has functional & memory support, allowing it to perform more complex calculations. Whereas, a regular calculator can only perform direct low-level calculations. ie. 1+1, 2*5, but it can't do 2^5, because that would require holding values in memory. 
+<p>In addition to basic arithmetic, the scientific calculator can evaluate scientific notation. The main difference seems to be that a scientific calc has functional & memory support, allowing it to perform more complex calculations. Whereas, a regular calculator can only perform direct low-level calculations. ie. 1+1, 2*5, but it can't do 2^5, because that would require holding values in memory. </p>
 
 <h2>What I learned</h2>
 
